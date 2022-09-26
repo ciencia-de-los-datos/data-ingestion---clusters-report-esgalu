@@ -20,7 +20,7 @@ def ingest_data():
         header=None
     )
 
-    list_col = df[:2].fillna('').sum().tolist()
+    list_col = df[:2].fillna('').apply(lambda x: ' ' + x).sum().tolist()
     list_col = [col.strip().lower().replace(' ', '_') for col in list_col]
 
     df = df[3:]
