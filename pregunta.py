@@ -18,7 +18,7 @@ def ingest_data():
         "clusters_report.txt",
         widths=[9, 16, 16, 80],
         header=None
-    )
+        )
 
     list_col = df[:2].fillna('').apply(lambda x: ' ' + x).sum().tolist()
     list_col = [col.strip().lower().replace(' ', '_') for col in list_col]
@@ -30,10 +30,9 @@ def ingest_data():
 
     df = df.groupby([
         'cluster',
-        'cantidad_depalabras_clave',
-        'porcentaje_depalabras_clave'
-    ],
-        as_index=False
+        'cantidad_de_palabras_clave',
+        'porcentaje_de_palabras_clave'
+    ], as_index=False
     )[[
         'principales_palabras_clave'
     ]].sum()
@@ -42,9 +41,9 @@ def ingest_data():
     df.principales_palabras_clave = df.principales_palabras_clave.str.replace("   "," ")
     df.principales_palabras_clave = df.principales_palabras_clave.str.replace("  "," ")
 
-    df.porcentaje_depalabras_clave = df.porcentaje_depalabras_clave.str.replace('%', '')
-    df.porcentaje_depalabras_clave = df.porcentaje_depalabras_clave.str.replace(',', '.')
-    df.porcentaje_depalabras_clave = df.porcentaje_depalabras_clave.map(float)
+    df.porcentaje_de_palabras_clave = df.porcentaje_de_palabras_clave.str.replace('%', '')
+    df.porcentaje_de_palabras_clave = df.porcentaje_de_palabras_clave.str.replace(',', '.')
+    df.porcentaje_de_palabras_clave = df.porcentaje_de_palabras_clave.map(float)
 
     df.cluster = df.cluster.map(int)
     df = df.sort_values('cluster')
