@@ -45,6 +45,7 @@ def ingest_data():
     df.principales_palabras_clave = df.principales_palabras_clave.str.replace(".", "", regex=True)
     df.principales_palabras_clave = df.principales_palabras_clave.str.replace("   "," ")
     df.principales_palabras_clave = df.principales_palabras_clave.str.replace("  "," ")
+    df.principales_palabras_clave = df.principales_palabras_clave.str.replace("  "," ")
     df.principales_palabras_clave = df.principales_palabras_clave.str.strip()
 
     df.porcentaje_de_palabras_clave = df.porcentaje_de_palabras_clave.str.replace('%', '')
